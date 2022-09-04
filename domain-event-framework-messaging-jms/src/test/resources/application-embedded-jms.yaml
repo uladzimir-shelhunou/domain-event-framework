@@ -1,0 +1,10 @@
+spring:
+  activemq:
+    broker-url: vm://embedded?broker.persistent=false,useShutdownHook=false
+    close-timeout: 30000
+    in-memory: true
+    non-blocking-redelivery: false
+    user: admin
+    password: admin
+    pool:
+      enabled: false

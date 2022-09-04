@@ -1,0 +1,42 @@
+logging:
+  level:
+    root: DEBUG
+
+spring:
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/altais
+    username: altais
+    password: altais
+
+    hikari:
+      minimum-idle: 10
+      maximum-pool-size: 25
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      show-sql: false
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        default_schema: ${database.schema}
+
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/changelog/db.changelog-master.xml
+
+database:
+  schema: test_schema
+  entityManager:
+    packages-to-scan: net.vvsh.domainevent.core.entity
+
+core:
+  domain-event:
+    service-id: test
+    outbox:
+      message-relay:
+        interval.ms: 1000
+    event-log:
+      enabled: true
