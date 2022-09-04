@@ -14,5 +14,4 @@ public interface DomainEvent {
     default String getEventType() {
         return getClass().getSimpleName();
     }
-
 }

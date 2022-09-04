@@ -25,5 +25,4 @@ public class EventLogConfiguration {
     public EventLogTableInitializer eventLogTableInitializer(JdbcTemplate jdbcTemplate, JpaProperties jpaProperties) {
         return new EventLogTableInitializer(jdbcTemplate, jpaProperties);
     }
-
 }

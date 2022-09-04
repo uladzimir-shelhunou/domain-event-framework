@@ -29,16 +29,16 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(classes = {
-        TestAppCommonConfiguration.class
+    TestAppCommonConfiguration.class
 })
 @MockBean({
-        DomainEventConsumer.class,
-        MessageProducer.class
+    DomainEventConsumer.class,
+    MessageProducer.class
 })
 @ImportAutoConfiguration(classes = {
-        JacksonAutoConfiguration.class, JmsAutoConfiguration.class,
-        LiquibaseAutoConfiguration.class, DatabaseConfiguration.class,
-        DomainEventAutoConfiguration.class
+    JacksonAutoConfiguration.class, JmsAutoConfiguration.class,
+    LiquibaseAutoConfiguration.class, DatabaseConfiguration.class,
+    DomainEventAutoConfiguration.class
 })
 @EnableEmbeddedDatabase(refresh = AutoConfigureEmbeddedDatabase.RefreshMode.AFTER_CLASS)
 @ActiveProfiles("embedded")
@@ -62,9 +62,9 @@ class DomainEventLocalPublisherTest {
         TestDomainEvent domainEvent = new TestDomainEvent();
 
         domainEventPublisher.publish(
-                TestAggregateType.TEST_AGGREGATE,
-                AGGREGATE_ID,
-                domainEvent
+            TestAggregateType.TEST_AGGREGATE,
+            AGGREGATE_ID,
+            domainEvent
         );
 
         List<EventHandlerContext<TestDomainEvent>> contexts = testDomainEventConsumer.getReceivedEventContexts();
@@ -76,14 +76,12 @@ class DomainEventLocalPublisherTest {
         TestDomainEvent domainEvent = new TestDomainEvent();
 
         domainEventPublisher.publish(
-                TestAggregateType.TEST_AGGREGATE,
-                AGGREGATE_ID,
-                List.of(domainEvent, domainEvent)
+            TestAggregateType.TEST_AGGREGATE,
+            AGGREGATE_ID,
+            List.of(domainEvent, domainEvent)
         );
 
         List<EventHandlerContext<TestDomainEvent>> contexts = testDomainEventConsumer.getReceivedEventContexts();
         assertEquals(2, contexts.size());
     }
-
-
 }

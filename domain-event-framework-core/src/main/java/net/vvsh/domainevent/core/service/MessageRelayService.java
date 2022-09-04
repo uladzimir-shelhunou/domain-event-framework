@@ -45,9 +45,8 @@ public class MessageRelayService {
     private List<OutboxEntity> findUnprocessedEvents() {
         DomainEventProperties.OutboxProperties outboxProperties = properties.getOutbox();
         PageRequest pageRequest = PageRequest.ofSize(outboxProperties.getMessageRelay().getBatchSize())
-                .withSort(Sort.by(OutboxEntity_.SUBMITTED_DATE).ascending());
+            .withSort(Sort.by(OutboxEntity_.SUBMITTED_DATE).ascending());
 
         return repository.findUnprocessedEntities(pageRequest);
     }
-
 }

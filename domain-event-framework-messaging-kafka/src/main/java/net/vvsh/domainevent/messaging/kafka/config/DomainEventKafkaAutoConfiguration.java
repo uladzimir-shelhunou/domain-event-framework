@@ -116,8 +116,9 @@ public class DomainEventKafkaAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean(ConcurrentKafkaListenerContainerFactory.class)
-    public <E extends DomainEvent> ConcurrentKafkaListenerContainerFactory<UUID, E> containerFactory(ConsumerFactory<UUID, E> consumerFactory,
-                                                                                                     DomainEventKafkaProperties properties) {
+    public <E extends DomainEvent> ConcurrentKafkaListenerContainerFactory<UUID, E> containerFactory(
+        ConsumerFactory<UUID, E> consumerFactory,
+        DomainEventKafkaProperties properties) {
         ConcurrentKafkaListenerContainerFactory<UUID, E> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory);
         factory.getContainerProperties().setAckMode(ContainerProperties.AckMode.MANUAL_IMMEDIATE);

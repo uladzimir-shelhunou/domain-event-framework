@@ -59,7 +59,7 @@ public class KafkaDomainEventListenerConfigurer<E extends DomainEvent> implement
 
         allHandlers.forEach((aggregateType, handlers) -> {
             KafkaMessageListenerAdapter<UUID, E> messageListenerAdapter = new KafkaMessageListenerAdapter<>(
-                    handlers);
+                handlers);
             registerHandlerForAggregateType(aggregateType, serviceId, messageListenerAdapter, registrar);
         });
     }
@@ -109,5 +109,4 @@ public class KafkaDomainEventListenerConfigurer<E extends DomainEvent> implement
     private String generateEndpointId() {
         return MethodKafkaListenerEndpoint.class.getSimpleName() + "#" + COUNTER.getAndIncrement();
     }
-
 }

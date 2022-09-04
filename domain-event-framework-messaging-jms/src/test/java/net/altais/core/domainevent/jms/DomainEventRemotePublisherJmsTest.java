@@ -33,16 +33,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest(classes = {
-        TestAppCommonConfiguration.class,
-        TestAppJMSConfiguration.class,
-        DatabaseConfiguration.class
+    TestAppCommonConfiguration.class,
+    TestAppJMSConfiguration.class,
+    DatabaseConfiguration.class
 })
 @ImportAutoConfiguration(classes = {
-        JacksonAutoConfiguration.class,
-        JmsAutoConfiguration.class,
-        LiquibaseAutoConfiguration.class,
-        DomainEventJmsAutoConfiguration.class,
-        DomainEventAutoConfiguration.class
+    JacksonAutoConfiguration.class,
+    JmsAutoConfiguration.class,
+    LiquibaseAutoConfiguration.class,
+    DomainEventJmsAutoConfiguration.class,
+    DomainEventAutoConfiguration.class
 })
 @EnableEmbeddedDatabase(refresh = AutoConfigureEmbeddedDatabase.RefreshMode.AFTER_CLASS)
 @ActiveProfiles({"embedded", "embedded-jms"})
@@ -94,5 +94,4 @@ class DomainEventRemotePublisherJmsTest {
 
         assertTrue(eventLogServiceProxy.isEventProcessed(TestAggregateType.TEST_AGGREGATE, context.getEventId()));
     }
-
 }

@@ -30,5 +30,4 @@ public abstract class BaseTableInitializer implements InitializingBean {
 
     @NonNull
     protected abstract StatementCallback<Boolean> createStatement(String schemaName);
-
 }

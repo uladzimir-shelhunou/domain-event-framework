@@ -20,5 +20,4 @@ public class JacksonConfiguration {
             jacksonObjectMapperBuilder.featuresToDisable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
         };
     }
-
 }

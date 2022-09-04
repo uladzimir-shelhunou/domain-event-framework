@@ -12,5 +12,4 @@ public class EventLogEnabledCondition extends AllNestedConditions {
     @ConditionalOnProperty(prefix = "domain-event.core.event-log", name = "enabled", havingValue = "true")
     static class EventLogEnabled {
     }
-
 }

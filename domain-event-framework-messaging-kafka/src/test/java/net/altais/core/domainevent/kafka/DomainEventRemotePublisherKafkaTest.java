@@ -34,17 +34,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest(classes = {
-        TestAppCommonConfiguration.class,
-        TestAppKafkaConfiguration.class,
-        DatabaseConfiguration.class
+    TestAppCommonConfiguration.class,
+    TestAppKafkaConfiguration.class,
+    DatabaseConfiguration.class
 })
 @DirtiesContext
 @ImportAutoConfiguration(classes = {
-        JacksonAutoConfiguration.class,
-        KafkaAutoConfiguration.class,
-        LiquibaseAutoConfiguration.class,
-        DomainEventAutoConfiguration.class,
-        DomainEventKafkaAutoConfiguration.class
+    JacksonAutoConfiguration.class,
+    KafkaAutoConfiguration.class,
+    LiquibaseAutoConfiguration.class,
+    DomainEventAutoConfiguration.class,
+    DomainEventKafkaAutoConfiguration.class
 })
 @EnableEmbeddedDatabase(refresh = RefreshMode.AFTER_CLASS)
 @EmbeddedKafka(count = 1)
@@ -88,5 +88,4 @@ class DomainEventRemotePublisherKafkaTest {
 
         assertTrue(eventLogServiceProxy.isEventProcessed(TestAggregateType.TEST_AGGREGATE, context.getEventId()));
     }
-
 }

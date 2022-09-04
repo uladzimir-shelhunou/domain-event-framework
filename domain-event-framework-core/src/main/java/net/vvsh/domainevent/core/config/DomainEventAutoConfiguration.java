@@ -30,8 +30,7 @@ public class DomainEventAutoConfiguration {
 
     @Bean
     public <E extends DomainEvent> DomainEventHandlerRegistry<E> domainEventHandlerRegistry(
-            ObjectProvider<DomainEventHandler<E>> provider) {
+        ObjectProvider<DomainEventHandler<E>> provider) {
         return new DomainEventHandlerRegistry<>(provider.stream().collect(toList()));
     }
-
 }

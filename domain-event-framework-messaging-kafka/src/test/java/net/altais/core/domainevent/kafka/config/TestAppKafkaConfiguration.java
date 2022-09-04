@@ -63,5 +63,4 @@ public class TestAppKafkaConfiguration {
         producerFactory.setValueSerializer(jsonSerializer);
         return producerFactory;
     }
-
 }

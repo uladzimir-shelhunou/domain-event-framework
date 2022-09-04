@@ -19,7 +19,8 @@ import org.springframework.util.ClassUtils;
 public class DomainEventConverter implements AttributeConverter<DomainEvent, String> {
 
     private static final String TYPE_COLUMN = "_type";
-    private static final TypeReference<Map<String, Object>> OBJECT_MAP = new TypeReference<>() {};
+    private static final TypeReference<Map<String, Object>> OBJECT_MAP = new TypeReference<>() {
+    };
 
     private final ConcurrentMap<String, Class<?>> idClassMappings = new ConcurrentHashMap<>();
     private final ObjectMapper objectMapper;
@@ -78,5 +79,4 @@ public class DomainEventConverter implements AttributeConverter<DomainEvent, Str
 
         return objectMapper.constructType(mappedClass);
     }
-
 }

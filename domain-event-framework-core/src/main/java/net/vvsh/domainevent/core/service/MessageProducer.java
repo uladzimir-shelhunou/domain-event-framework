@@ -8,9 +8,7 @@ public interface MessageProducer {
     /**
      * Send event to a message broker.
      *
-     * @param outboxEntity
-     *      event object
+     * @param outboxEntity event object
      */
     void send(@NonNull OutboxEntity outboxEntity);
-
 }

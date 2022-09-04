@@ -33,8 +33,8 @@ import static org.springframework.boot.autoconfigure.jms.JmsProperties.Acknowled
 @EnableJms
 @PropertySource("classpath:config/domain-event-jms.properties")
 @EnableConfigurationProperties({
-        ActiveMQProperties.class,
-        DomainEventJmsProperties.class
+    ActiveMQProperties.class,
+    DomainEventJmsProperties.class
 })
 public class DomainEventJmsAutoConfiguration {
 
@@ -74,8 +74,9 @@ public class DomainEventJmsAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean(JmsListenerContainerFactory.class)
-    public JmsListenerContainerFactory<DefaultMessageListenerContainer> jmsListenerContainerFactory(ConnectionFactory connectionFactory,
-                                                                                                    DefaultJmsListenerContainerFactoryConfigurer configurer) {
+    public JmsListenerContainerFactory<DefaultMessageListenerContainer> jmsListenerContainerFactory(
+        ConnectionFactory connectionFactory,
+        DefaultJmsListenerContainerFactoryConfigurer configurer) {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         configurer.configure(factory, connectionFactory);
         factory.setSessionAcknowledgeMode(CLIENT.getMode());
@@ -90,5 +91,4 @@ public class DomainEventJmsAutoConfiguration {
         MessageConverter messageConverter) {
         return new JmsDomainEventListenerConfigurer<>(registry, containerFactory, properties, messageConverter);
     }
-
 }

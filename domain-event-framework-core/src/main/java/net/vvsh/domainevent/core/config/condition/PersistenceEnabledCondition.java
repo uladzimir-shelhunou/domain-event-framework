@@ -10,9 +10,10 @@ public class PersistenceEnabledCondition extends AnyNestedCondition {
     }
 
     @Conditional(EventLogEnabledCondition.class)
-    static class EventLogEnabled {}
+    static class EventLogEnabled {
+    }
 
     @Conditional(OutboxEnabledCondition.class)
-    static class OutboxEnabled {}
-
+    static class OutboxEnabled {
+    }
 }

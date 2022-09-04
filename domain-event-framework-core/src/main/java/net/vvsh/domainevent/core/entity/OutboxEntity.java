@@ -53,5 +53,4 @@ public class OutboxEntity {
 
     @Column(name = "fulfillment_date")
     private Instant fulfillmentDate;
-
 }

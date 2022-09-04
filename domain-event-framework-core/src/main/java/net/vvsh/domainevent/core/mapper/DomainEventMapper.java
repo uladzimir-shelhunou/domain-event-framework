@@ -25,5 +25,4 @@ public interface DomainEventMapper {
             outboxEntity.setSubmittedDate(Instant.now());
         }
     }
-
 }

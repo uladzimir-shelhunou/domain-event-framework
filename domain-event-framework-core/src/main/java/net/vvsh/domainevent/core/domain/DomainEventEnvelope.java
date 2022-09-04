@@ -21,5 +21,4 @@ public class DomainEventEnvelope<E extends DomainEvent> {
         this.eventType = requireNonNull(eventType);
         this.payload = requireNonNull(payload);
     }
-
 }

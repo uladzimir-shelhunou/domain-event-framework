@@ -34,5 +34,4 @@ public class TestAppCommonConfiguration {
     public TestDomainEventPublisher testDomainEventPublisher(DomainEventPublisher domainEventPublisher) {
         return new TestDomainEventPublisher(domainEventPublisher);
     }
-
 }

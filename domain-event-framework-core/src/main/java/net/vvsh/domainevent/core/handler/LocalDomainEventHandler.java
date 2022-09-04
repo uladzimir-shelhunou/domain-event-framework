@@ -4,7 +4,7 @@ import net.vvsh.domainevent.core.domain.DomainEvent;
 import org.springframework.lang.NonNull;
 
 public interface LocalDomainEventHandler<E extends DomainEvent>
-        extends DomainEventHandler<E> {
+    extends DomainEventHandler<E> {
 
     @NonNull
     @Override

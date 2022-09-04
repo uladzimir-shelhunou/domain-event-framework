@@ -18,17 +18,17 @@ public class OutboxTableInitializer extends BaseTableInitializer {
     protected StatementCallback<Boolean> createStatement(String schemaName) {
         return stmt -> {
             boolean result = stmt.execute("""
-                    CREATE TABLE IF NOT EXISTS %s.outbox (
-                        event_id uuid NOT NULL,
-                        event_type varchar NOT NULL,
-                        aggregate_type varchar NOT NULL,
-                        aggregate_id uuid NOT NULL,
-                        payload text,
-                        submitted_date timestamptz NOT NULL DEFAULT now(),
-                        fulfillment_date timestamptz,
-                        CONSTRAINT outbox_pkey PRIMARY KEY (event_id)
-                    );
-                    """.formatted(schemaName));
+                                              CREATE TABLE IF NOT EXISTS %s.outbox (
+                                                  event_id uuid NOT NULL,
+                                                  event_type varchar NOT NULL,
+                                                  aggregate_type varchar NOT NULL,
+                                                  aggregate_id uuid NOT NULL,
+                                                  payload text,
+                                                  submitted_date timestamptz NOT NULL DEFAULT now(),
+                                                  fulfillment_date timestamptz,
+                                                  CONSTRAINT outbox_pkey PRIMARY KEY (event_id)
+                                              );
+                                              """.formatted(schemaName));
 
             if (result) {
                 log.info("The outbox table created successfully.");
@@ -38,5 +38,4 @@ public class OutboxTableInitializer extends BaseTableInitializer {
             return false;
         };
     }
-
 }

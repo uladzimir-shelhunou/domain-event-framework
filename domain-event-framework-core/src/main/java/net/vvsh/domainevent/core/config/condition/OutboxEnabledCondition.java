@@ -12,5 +12,4 @@ public class OutboxEnabledCondition extends AllNestedConditions {
     @ConditionalOnProperty(prefix = "domain-event.core.outbox", name = "enabled", havingValue = "true")
     static class OutboxEnabled {
     }
-
 }

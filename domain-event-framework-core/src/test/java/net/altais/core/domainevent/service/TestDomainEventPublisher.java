@@ -25,5 +25,4 @@ public class TestDomainEventPublisher {
     public void publish(AggregateType aggregateType, UUID aggregateId, List<DomainEvent> domainEvents) {
         domainEventPublisher.publish(aggregateType, aggregateId, domainEvents);
     }
-
 }

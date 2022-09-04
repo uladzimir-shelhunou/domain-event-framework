@@ -62,5 +62,4 @@ public class JmsDomainEventListenerConfigurer<E extends DomainEvent> implements 
     private String generateEndpointId() {
         return SimpleJmsListenerEndpoint.class.getSimpleName() + "#" + COUNTER.getAndIncrement();
     }
-
 }

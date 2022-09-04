@@ -24,7 +24,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class OutboxConfiguration {
 
     @Bean
-    public DomainEventService domainEventService(OutboxRepository outboxRepository, DomainEventMapper domainEventMapper) {
+    public DomainEventService domainEventService(OutboxRepository outboxRepository,
+                                                 DomainEventMapper domainEventMapper) {
         return new DomainEventService(outboxRepository, domainEventMapper);
     }
 
@@ -55,5 +56,4 @@ public class OutboxConfiguration {
     public OutboxTableInitializer outboxTableInitializer(JdbcTemplate jdbcTemplate, JpaProperties jpaProperties) {
         return new OutboxTableInitializer(jdbcTemplate, jpaProperties);
     }
-
 }

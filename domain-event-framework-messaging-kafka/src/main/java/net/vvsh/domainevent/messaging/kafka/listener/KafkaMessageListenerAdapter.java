@@ -27,22 +27,22 @@ public class KafkaMessageListenerAdapter<K, V extends DomainEvent> implements Ac
         Headers headers = consumerRecord.headers();
 
         List<DomainEventHandler<V>> suitableHandlers = handlers.stream()
-                .filter(handler -> handler.getEventClass().isAssignableFrom(domainEvent.getClass()))
-                .collect(toList());
+            .filter(handler -> handler.getEventClass().isAssignableFrom(domainEvent.getClass()))
+            .toList();
 
         boolean processed = false;
         try {
-            for (DomainEventHandler<V> handler : suitableHandlers) {
+            suitableHandlers.forEach(handler -> {
                 EventHandlerContext<V> context = EventHandlerContext.<V>builder()
-                        .aggregateId(KafkaMessageUtils.getAggregateId(headers))
-                        .aggregateType(KafkaMessageUtils.getAggregateType(headers))
-                        .eventId(KafkaMessageUtils.getEventId(headers))
-                        .domainEvent(handler.getEventClass().cast(domainEvent))
-                        .timestamp(consumerRecord.timestamp())
-                        .build();
+                    .aggregateId(KafkaMessageUtils.getAggregateId(headers))
+                    .aggregateType(KafkaMessageUtils.getAggregateType(headers))
+                    .eventId(KafkaMessageUtils.getEventId(headers))
+                    .domainEvent(handler.getEventClass().cast(domainEvent))
+                    .timestamp(consumerRecord.timestamp())
+                    .build();
 
                 handler.handle(context);
-            }
+            });
 
             processed = true;
         } catch (Exception e) {

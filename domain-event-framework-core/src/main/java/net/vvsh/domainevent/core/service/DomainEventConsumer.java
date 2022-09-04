@@ -14,5 +14,4 @@ public class DomainEventConsumer {
     public void consume(DomainEventEnvelope<DomainEvent> domainEventEnvelope) {
         service.save(domainEventEnvelope);
     }
-
 }

@@ -22,6 +22,5 @@ public class DomainEventJmsProperties {
         private boolean useExponentialBackoff;
         private double backoffMultiplier;
         private int maxRedeliveries;
-
     }
 }

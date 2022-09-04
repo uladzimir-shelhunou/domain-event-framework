@@ -16,5 +16,4 @@ public interface OutboxRepository extends JpaRepository<OutboxEntity, UUID> {
     @Query("SELECT o FROM OutboxEntity o WHERE o.fulfillmentDate is null")
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     List<OutboxEntity> findUnprocessedEntities(Pageable pageable);
-
 }

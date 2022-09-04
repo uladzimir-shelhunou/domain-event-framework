@@ -30,5 +30,4 @@ public class EventLogEntity {
 
     @Column(name = "processed_date", nullable = false)
     private Instant processedDate;
-
 }

@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 @RequiredArgsConstructor
 public abstract class IdempotentDomainEventHandler<E extends DomainEvent>
-        implements DomainEventHandler<E> {
+    implements DomainEventHandler<E> {
 
     @Autowired
     private EventLogService eventLogService;
@@ -46,8 +46,8 @@ public abstract class IdempotentDomainEventHandler<E extends DomainEvent>
 
     private boolean isEventProcessed(EventHandlerContext<E> context) {
         return context.getAggregateType() != null
-                && context.getEventId() != null
-                && eventLogService.isEventProcessed(context.getAggregateType(), context.getEventId());
+            && context.getEventId() != null
+            && eventLogService.isEventProcessed(context.getAggregateType(), context.getEventId());
     }
 
     private void markEventAsProcessed(EventHandlerContext<E> context) {
@@ -62,5 +62,4 @@ public abstract class IdempotentDomainEventHandler<E extends DomainEvent>
      * @param context event context
      */
     protected abstract void handleEvent(EventHandlerContext<E> context);
-
 }

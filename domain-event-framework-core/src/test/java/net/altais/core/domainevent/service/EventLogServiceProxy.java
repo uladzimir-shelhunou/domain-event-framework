@@ -16,5 +16,4 @@ public class EventLogServiceProxy {
     public boolean isEventProcessed(AggregateType aggregateType, UUID eventId) {
         return eventLogService.isEventProcessed(aggregateType.getName(), eventId);
     }
-
 }

@@ -30,5 +30,4 @@ public class EventLogService {
         entity.setProcessedDate(Instant.now());
         repository.save(entity);
     }
-
 }

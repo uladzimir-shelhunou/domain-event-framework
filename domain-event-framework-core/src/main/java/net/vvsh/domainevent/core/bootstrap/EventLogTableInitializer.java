@@ -18,13 +18,13 @@ public class EventLogTableInitializer extends BaseTableInitializer {
     protected StatementCallback<Boolean> createStatement(String schemaName) {
         return stmt -> {
             boolean result = stmt.execute("""
-                    CREATE TABLE IF NOT EXISTS %s.event_log (
-                        aggregate_type varchar NOT NULL,
-                        event_id uuid NOT NULL,
-                        processed_date timestamptz NOT NULL,
-                        CONSTRAINT inbox_pkey PRIMARY KEY (aggregate_type, event_id)
-                    );
-                    """.formatted(schemaName));
+                                              CREATE TABLE IF NOT EXISTS %s.event_log (
+                                                  aggregate_type varchar NOT NULL,
+                                                  event_id uuid NOT NULL,
+                                                  processed_date timestamptz NOT NULL,
+                                                  CONSTRAINT inbox_pkey PRIMARY KEY (aggregate_type, event_id)
+                                              );
+                                              """.formatted(schemaName));
 
             if (result) {
                 log.info("The message_log table created successfully.");
@@ -35,5 +35,4 @@ public class EventLogTableInitializer extends BaseTableInitializer {
             return false;
         };
     }
-
 }

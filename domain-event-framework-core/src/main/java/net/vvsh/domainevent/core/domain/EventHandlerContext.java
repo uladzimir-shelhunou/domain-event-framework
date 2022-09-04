@@ -25,5 +25,4 @@ public class EventHandlerContext<E extends DomainEvent> {
     public String getDomainEventType() {
         return domainEvent.getEventType();
     }
-
 }

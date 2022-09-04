@@ -40,5 +40,4 @@ public class TestDomainEventConsumer implements LocalDomainEventHandler<TestDoma
     public void clear() {
         receivedEventContexts.clear();
     }
-
 }

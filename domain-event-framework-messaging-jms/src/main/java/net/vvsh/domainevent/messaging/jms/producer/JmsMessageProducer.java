@@ -24,9 +24,9 @@ public class JmsMessageProducer implements MessageProducer {
     public void send(@NonNull OutboxEntity outboxEntity) {
         String topic = buildTopicName(outboxEntity.getAggregateType());
         jmsMessagingTemplate.convertAndSend(
-                new ActiveMQTopic(topic),
-                outboxEntity.getPayload(),
-                buildHeaders(outboxEntity)
+            new ActiveMQTopic(topic),
+            outboxEntity.getPayload(),
+            buildHeaders(outboxEntity)
         );
     }
 
@@ -38,11 +38,10 @@ public class JmsMessageProducer implements MessageProducer {
     @NonNull
     private Map<String, Object> buildHeaders(@NonNull OutboxEntity outboxEntity) {
         return Map.of(
-                HEADER_EVENT_AGGREGATE_TYPE, outboxEntity.getAggregateType(),
-                HEADER_EVENT_AGGREGATE_ID, outboxEntity.getAggregateId().toString(),
-                HEADER_EVENT_TYPE, outboxEntity.getEventType(),
-                HEADER_EVENT_ID, outboxEntity.getEventId().toString()
+            HEADER_EVENT_AGGREGATE_TYPE, outboxEntity.getAggregateType(),
+            HEADER_EVENT_AGGREGATE_ID, outboxEntity.getAggregateId().toString(),
+            HEADER_EVENT_TYPE, outboxEntity.getEventType(),
+            HEADER_EVENT_ID, outboxEntity.getEventId().toString()
         );
     }
-
 }

@@ -22,7 +22,7 @@ public class DomainEventPublisher {
                         @NonNull UUID aggregateId,
                         @NonNull DomainEvent domainEvent) {
         DomainEventEnvelope<DomainEvent> eventEnvelope = buildEnvelope(aggregateType, aggregateId,
-                domainEvent);
+                                                                       domainEvent);
         applicationEventPublisher.publishEvent(eventEnvelope);
     }
 
@@ -38,11 +38,10 @@ public class DomainEventPublisher {
                                                            @NonNull UUID aggregateId,
                                                            @NonNull DomainEvent domainEvent) {
         return DomainEventEnvelope.builder()
-                .aggregateType(aggregateType.getName())
-                .aggregateId(aggregateId)
-                .eventType(domainEvent.getEventType())
-                .payload(domainEvent)
-                .build();
+            .aggregateType(aggregateType.getName())
+            .aggregateId(aggregateId)
+            .eventType(domainEvent.getEventType())
+            .payload(domainEvent)
+            .build();
     }
-
 }

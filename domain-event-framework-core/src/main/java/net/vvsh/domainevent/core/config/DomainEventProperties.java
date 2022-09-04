@@ -25,7 +25,6 @@ public class DomainEventProperties {
     public static class EventLogProperties {
 
         private Boolean enabled;
-
     }
 
     @Data
@@ -36,7 +35,6 @@ public class DomainEventProperties {
 
         private Boolean enabled;
         private MessageRelayProperties messageRelay;
-
     }
 
     @Data
@@ -46,6 +44,5 @@ public class DomainEventProperties {
     public static class MessageRelayProperties {
 
         private Integer batchSize = 32;
-
     }
 }

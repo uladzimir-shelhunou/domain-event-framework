@@ -12,5 +12,4 @@ public class JmsConstants {
     public static final String HEADER_EVENT_AGGREGATE_ID = "event-aggregate-id";
     public static final String HEADER_EVENT_ID = "event-id";
     public static final String HEADER_EVENT_TYPE = "event-type";
-
 }

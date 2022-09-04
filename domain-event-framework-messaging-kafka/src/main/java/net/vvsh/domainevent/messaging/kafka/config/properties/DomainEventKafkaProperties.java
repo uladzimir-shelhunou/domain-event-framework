@@ -14,5 +14,4 @@ import java.util.List;
 public class DomainEventKafkaProperties {
 
     private List<String> trustedPackages;
-
 }

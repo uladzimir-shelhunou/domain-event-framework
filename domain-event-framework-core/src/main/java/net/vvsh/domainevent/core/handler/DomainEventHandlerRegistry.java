@@ -21,10 +21,10 @@ public class DomainEventHandlerRegistry<E extends DomainEvent> {
         validate(handlers);
 
         registry = handlers.stream()
-                .collect(
-                        groupingBy(DomainEventHandler::getHandlerType,
-                        groupingBy(handler -> handler.getAggregateType().getName()))
-                );
+            .collect(
+                groupingBy(DomainEventHandler::getHandlerType,
+                           groupingBy(handler -> handler.getAggregateType().getName()))
+            );
     }
 
     private void validate(List<DomainEventHandler<E>> handlers) {
@@ -47,10 +47,9 @@ public class DomainEventHandlerRegistry<E extends DomainEvent> {
                                                    @Nullable String aggregateType,
                                                    @NonNull Class<?> domainEventClass) {
         return registry.getOrDefault(handlerType, Map.of())
-                .getOrDefault(aggregateType, emptyList())
-                .stream()
-                .filter(handler -> handler.getEventClass().isAssignableFrom(domainEventClass))
-                .collect(toList());
+            .getOrDefault(aggregateType, emptyList())
+            .stream()
+            .filter(handler -> handler.getEventClass().isAssignableFrom(domainEventClass))
+            .collect(toList());
     }
-
 }

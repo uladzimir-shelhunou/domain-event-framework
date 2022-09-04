@@ -22,5 +22,4 @@ public class DomainEventService {
         List<OutboxEntity> outboxEntities = mapper.toEntityList(domainEvents);
         repository.saveAll(outboxEntities);
     }
-
 }

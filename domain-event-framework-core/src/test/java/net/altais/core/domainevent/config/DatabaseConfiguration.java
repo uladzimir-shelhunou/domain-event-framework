@@ -26,8 +26,10 @@ import javax.sql.DataSource;
 @EnableConfigurationProperties(JpaProperties.class)
 public class DatabaseConfiguration {
 
-    private static final String PHYSICAL_NAMING_STRATEGY = "org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy";
-    private static final String IMPLICIT_NAMING_STRATEGY = "org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy";
+    private static final String PHYSICAL_NAMING_STRATEGY =
+        "org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy";
+    private static final String IMPLICIT_NAMING_STRATEGY =
+        "org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy";
     private static final String PERSISTENT_UNIT = "persistence-unit";
 
     private final ConfigurableListableBeanFactory beanFactory;
@@ -70,5 +72,4 @@ public class DatabaseConfiguration {
         transactionManager.setEntityManagerFactory(emf);
         return transactionManager;
     }
-
 }

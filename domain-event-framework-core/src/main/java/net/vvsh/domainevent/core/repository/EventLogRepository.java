@@ -9,5 +9,4 @@ import org.springframework.stereotype.Repository;
 public interface EventLogRepository extends JpaRepository<EventLogEntity, UUID> {
 
     boolean existsByAggregateTypeAndEventId(String aggregateType, UUID eventId);
-
 }

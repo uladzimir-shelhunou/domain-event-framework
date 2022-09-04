@@ -30,7 +30,7 @@ public class LocalDomainEventProcessor<E extends DomainEvent> {
                 handler.handle(context);
             } catch (Exception e) {
                 log.error("Error occurred during processing of event with type: %s"
-                        .formatted(envelope.getEventType()), e);
+                              .formatted(envelope.getEventType()), e);
 
                 throw e;
             }
@@ -39,10 +39,9 @@ public class LocalDomainEventProcessor<E extends DomainEvent> {
 
     private EventHandlerContext<E> buildContext(DomainEventEnvelope<E> envelope) {
         return EventHandlerContext.<E>builder()
-                .aggregateType(envelope.getAggregateType())
-                .aggregateId(envelope.getAggregateId())
-                .domainEvent(envelope.getPayload())
-                .build();
+            .aggregateType(envelope.getAggregateType())
+            .aggregateId(envelope.getAggregateId())
+            .domainEvent(envelope.getPayload())
+            .build();
     }
-
 }

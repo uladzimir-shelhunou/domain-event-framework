@@ -13,6 +13,7 @@ import org.springframework.messaging.MessageHeaders;
 import java.util.List;
 import javax.jms.Message;
 import javax.jms.MessageListener;
+
 import static net.vvsh.domainevent.messaging.jms.util.JmsMessageUtils.getAggregateId;
 import static net.vvsh.domainevent.messaging.jms.util.JmsMessageUtils.getAggregateType;
 import static net.vvsh.domainevent.messaging.jms.util.JmsMessageUtils.getEventId;
@@ -34,17 +35,17 @@ public class JmsMessageListenerAdapter<E extends DomainEvent> implements Message
             MessageHeaders headers = JMS_HEADER_MAPPER.toHeaders(message);
 
             List<DomainEventHandler<E>> suitableHandlers = handlers.stream()
-                    .filter(handler -> handler.getEventClass().isAssignableFrom(payload.getClass()))
-                    .collect(toList());
+                .filter(handler -> handler.getEventClass().isAssignableFrom(payload.getClass()))
+                .collect(toList());
 
             for (DomainEventHandler<E> handler : suitableHandlers) {
                 EventHandlerContext<E> context = EventHandlerContext.<E>builder()
-                        .aggregateId(getAggregateId(headers))
-                        .aggregateType(getAggregateType(headers))
-                        .eventId(getEventId(headers))
-                        .domainEvent(handler.getEventClass().cast(payload))
-                        .timestamp(headers.getTimestamp())
-                        .build();
+                    .aggregateId(getAggregateId(headers))
+                    .aggregateType(getAggregateType(headers))
+                    .eventId(getEventId(headers))
+                    .domainEvent(handler.getEventClass().cast(payload))
+                    .timestamp(headers.getTimestamp())
+                    .build();
 
                 handler.handle(context);
             }

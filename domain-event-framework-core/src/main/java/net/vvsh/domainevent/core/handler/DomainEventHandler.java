@@ -32,7 +32,7 @@ public interface DomainEventHandler<E extends DomainEvent> {
 
     /**
      * Type of the handler.
-     *
+     * <p>
      * By default, handler type is REMOTE.
      * Remote handlers will be executed in a separate thread upon receiving messages from the event bus.
      *
@@ -42,5 +42,4 @@ public interface DomainEventHandler<E extends DomainEvent> {
     default HandlerType getHandlerType() {
         return HandlerType.REMOTE;
     }
-
 }

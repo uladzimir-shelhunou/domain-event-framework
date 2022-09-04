@@ -38,5 +38,4 @@ public class TestRemoteDomainEventConsumer extends IdempotentDomainEventHandler<
     public void clear() {
         receivedEventContexts.clear();
     }
-
 }

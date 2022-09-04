@@ -8,5 +8,4 @@ public interface AggregateType {
      * @return string
      */
     String getName();
-
 }

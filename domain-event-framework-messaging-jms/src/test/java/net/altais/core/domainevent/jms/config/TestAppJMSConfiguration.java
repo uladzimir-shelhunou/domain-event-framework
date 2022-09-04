@@ -22,5 +22,4 @@ public class TestAppJMSConfiguration {
         activeMQConnectionFactory.setPassword(properties.getPassword());
         return activeMQConnectionFactory;
     }
-
 }
